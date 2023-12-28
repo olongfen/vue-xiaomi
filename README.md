@@ -1,6 +1,6 @@
 # vue-xiaomi
 
-This template should help get you started developing with Vue 3 in Vite.
+用vue3 +ts 模仿小米官方
 
 ## Recommended IDE Setup
 
