@@ -67,11 +67,11 @@ const footerTable = ref([
       </div>
       <div class="footer-detail">
         <ul  class="footer-links">
-          <li class="footer-link" v-for="item in footerTable" :key="item">
+          <li class="footer-link" v-for="(item,index) in footerTable" :key="index">
             <div>
               <h3 class="footer-link-title">{{item.title}}</h3>
-              <p class="footer-link-content" v-for="item in item.content" :key="item">
-                <a href="#">{{item}}</a>
+              <p class="footer-link-content" v-for="(content,index) in item.content" :key="index">
+                <a href="#">{{content}}</a>
               </p>
             </div>
           </li>

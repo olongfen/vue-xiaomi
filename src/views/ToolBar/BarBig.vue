@@ -1,11 +1,14 @@
 <script setup lang="ts">
-const handleQrcode = (action) => {
+const handleQrcode = (action:any) => {
   const qrcode = document.querySelector('.qrcode')
-  if (action) {
-    qrcode.style.display = 'block'
-  }else {
-    qrcode.style.display = 'none'
+  if (qrcode instanceof HTMLElement) {
+    if (action) {
+      qrcode.style.display = 'block'
+    }else {
+      qrcode.style.display = 'none'
+    }
   }
+
 }
 </script>
 

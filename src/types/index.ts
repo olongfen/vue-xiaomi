@@ -3,7 +3,8 @@ interface Good {
   name: string
   price: number
   img: string
-  desc: string
+  desc?: string
+  del?: number
   unit: string
 
 }
@@ -14,7 +15,7 @@ interface CategoryGood {
 
 
 interface CategoryGoods {
-  category: string,
+  category?: string,
   list: Good[],
 }
 
@@ -22,7 +23,7 @@ interface BaseShow {
   title: string
   imgs: string[]
   goods: CategoryGoods[]
-  category: string[]
+  category?: string[]
 }
 
 export type {

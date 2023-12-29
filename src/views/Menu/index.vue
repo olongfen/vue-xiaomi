@@ -1,7 +1,9 @@
+
 <script setup lang="ts">
-import {CategoryGood} from '@/types'
+
+import type {CategoryGood} from '@/types'
 import { ref } from 'vue'
-const carouselList =ref<Array<String>>([
+const carouselList =ref<Array<string>>([
   'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/60fce15f8340a3d998e6297bf1c7a057.jpg?w=2452&h=920',
   'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6d9c2f8205e85cf57678b00380cd974.png?thumb=1&w=1226&h=460&f=webp&q=90',
   'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aea40518d62a25a59c5402f2e62c2333.jpg?thumb=1&w=1226&h=460&f=webp&q=90',
@@ -9,7 +11,7 @@ const carouselList =ref<Array<String>>([
 ])
 
 //  分类列表
-const categoryList = ref<Array<String>>([
+const categoryList = ref<Array<string>>([
   '手机',
   '电视',
   '家电',
@@ -58,17 +60,14 @@ const randomCategoryItemGoods = () => {
   return Math.floor(Math.random() * categoryList.value.length)
 }
 
-const handleCategoryHover = (flag,isline) => {
+const handleCategoryHover = (flag:any) => {
   const categoryUl = document.querySelector('.category-line-ul')
-  if (flag) {
-    categoryUl.style.display = 'flex'
-  }else {
-    if (isline) {
+  if (categoryUl instanceof HTMLElement){
+    if (flag) {
       categoryUl.style.display = 'flex'
     }else {
-      categoryUl.style.display = 'none'
+        categoryUl.style.display = 'none'
     }
-
   }
 }
 
@@ -80,7 +79,7 @@ const handleCategoryHover = (flag,isline) => {
   <div class="home-content">
     <div class="home-category">
       <ul class="category-ul" >
-        <li class="category-li" v-for="item,index in categoryList" :key="index" @mouseover="handleCategoryHover(true)" @mouseleave="handleCategoryHover(false)">
+        <li class="category-li" v-for="(item,index) in categoryList" :key="index" @mouseover="handleCategoryHover(true)" @mouseleave="handleCategoryHover(false)">
             <span>{{item}}</span>
             <el-icon class="category-icon"><ArrowRightBold /></el-icon>
         </li>
@@ -88,13 +87,13 @@ const handleCategoryHover = (flag,isline) => {
     </div>
     <div class="home-carousel" >
       <el-carousel height="auto" autoplay >
-        <el-carousel-item class="home-carousel-item"  v-for="item,index in carouselList" :key="index">
+        <el-carousel-item class="home-carousel-item"  v-for="(item,index) in carouselList" :key="index">
           <a  href="#"><img class="carousel-img"  :src="item" alt=""></a>
         </el-carousel-item>
       </el-carousel>
 
         <ul class="category-line-ul" @mouseover="handleCategoryHover(true)" @mouseleave="handleCategoryHover(false)">
-          <li class="category-line-li" v-for="item,index in categoryItemGoods" :key="index">
+          <li class="category-line-li" v-for="(item,index) in categoryItemGoods" :key="index">
             <a class="category-line-a" href="#">
               <img class="category-line-img" :src="item.img" alt="">
               <span>{{item.name}}</span>
@@ -107,7 +106,7 @@ const handleCategoryHover = (flag,isline) => {
   <div class="home-footer">
     <div class="home-footer-tools">
       <ul class="footer-tools-ul">
-        <li class="footer-tools-li" v-for="item,index in toolsList" :key="index">
+        <li class="footer-tools-li" v-for="(item,index) in toolsList" :key="index">
           <a class="footer-tools-item" href="#">
             <img :src="item.img" alt="">
             <i>{{item.name}}</i>

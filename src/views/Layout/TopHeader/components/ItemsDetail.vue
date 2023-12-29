@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import {Good} from "@/types"
+import type {Good} from "@/types"
 
 const props = defineProps({
-  goods: ref<Good[]>([]),
-  show: ref<boolean>(false)
+  goods: {
+    type: Array<Good>,
+  },
+  show: {
+    type: Boolean,
+  }
 })
 
 const showItemsDetail = ref<boolean>(false)
@@ -17,13 +21,15 @@ const handleShowItemsDetail = () => {
 }
 onMounted(() => {
   const ele = document.querySelector('.items-detail')
-  ele.classList.add('active')
+  if (ele instanceof HTMLElement) {
+    ele.classList.add('active')
+  }
 })
 </script>
 
 <template>
     <div v-show="showItemsDetail || props.show" class="items-detail" @mouseover="handleShowItemsDetail"  @mouseleave="handleCloseItemsDetail" >
-      <div v-for="good,idx in props.goods" :key="idx">
+      <div v-for="(good,idx) in props.goods" :key="idx">
         <div class="items-wrap" >
           <i class="item-sp" v-if="idx != 0"></i>
           <a  class="item" href="">

@@ -1,17 +1,54 @@
 <script setup lang="ts">
 import ItemPhone from './components/ItemPhone.vue'
 import ItemBaseShow from './components/ItemBaseShow.vue'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import {smartWear,laptop,homeAppliances,lifeElectronics,
   kitchenElectronics,smartHome,sportTravel} from '@/data'
+import type { BaseShow } from '@/types'
 
-const smartWearData =ref({})
-const laptopData =ref({})
-const homeAppliancesData = ref({})
-const lifeElectronicsData = ref({})
-const kitchenElectronicsData = ref({})
-const smartHomeData = ref({})
-const sportTravelData = ref({})
+const smartWearData =ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+const laptopData =ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+const homeAppliancesData = ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+const lifeElectronicsData =ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+const kitchenElectronicsData = ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+const smartHomeData = ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+const sportTravelData = ref<BaseShow>({
+  title: '',
+  category: [],
+  goods: [],
+  imgs: [],
+})
+
 smartWearData.value= smartWear
 laptopData.value= laptop
 homeAppliancesData.value= homeAppliances

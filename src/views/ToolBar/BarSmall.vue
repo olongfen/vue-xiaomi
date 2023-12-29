@@ -1,50 +1,62 @@
 <script setup lang="ts">
-const handleQrcode = (action) => {
+const handleQrcode = (action:any) => {
   const qrcode = document.querySelector('.qrcode')
-  if (action) {
-    qrcode.style.display = 'block'
-  }else {
-    qrcode.style.display = 'none'
+  if (qrcode instanceof HTMLElement) {
+    if (action) {
+      qrcode.style.display = 'block'
+    }else {
+      qrcode.style.display = 'none'
+    }
   }
 }
-const handlePerson = (action) => {
+const handlePerson = (action:any) => {
   const doc = document.getElementById('person')
-  if (action) {
-    doc.style.display = 'block'
-  }else {
-    doc.style.display = 'none'
+  if (doc instanceof HTMLElement){
+    if (action) {
+      doc.style.display = 'block'
+    }else {
+      doc.style.display = 'none'
+    }
   }
 }
-const handleAfterSale = (action) => {
+const handleAfterSale = (action:any) => {
   const doc = document.getElementById('after-sale')
-  if (action) {
-    doc.style.display = 'block'
-  }else {
-    doc.style.display = 'none'
+  if (doc instanceof HTMLElement){
+    if (action) {
+      doc.style.display = 'block'
+    }else {
+      doc.style.display = 'none'
+    }
   }
 }
-const handleService = (action) => {
+const handleService = (action:any) => {
   const doc = document.getElementById('service')
-  if (action) {
-    doc.style.display = 'block'
-  }else {
-    doc.style.display = 'none'
+  if (doc){
+    if (action) {
+      doc.style.display = 'block'
+    }else {
+      doc.style.display = 'none'
+    }
   }
 }
-const handleShoppingCart = (action) => {
+const handleShoppingCart = (action:any) => {
   const doc = document.getElementById('shopping-cart')
-  if (action) {
-    doc.style.display = 'block'
-  }else {
-    doc.style.display = 'none'
+  if (doc instanceof HTMLElement){
+    if (action) {
+      doc.style.display = 'block'
+    }else {
+      doc.style.display = 'none'
+    }
   }
 }
-const handleReturnTop = (action) => {
+const handleReturnTop = (action:any) => {
   const doc = document.getElementById('return-top')
-  if (action) {
-    doc.style.display = 'block'
-  }else {
-    doc.style.display = 'none'
+  if (doc instanceof HTMLElement){
+    if (action) {
+      doc.style.display = 'block'
+    }else {
+      doc.style.display = 'none'
+    }
   }
 }
 </script>

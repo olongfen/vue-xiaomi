@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import GoodsItemDetail from './GoodsItemDetail.vue'
-import { onMounted, ref, watch } from 'vue'
-import  { BaseShow } from '@/types'
+import {  ref, watch } from 'vue'
+import type { BaseShow, Good } from '@/types'
 
 
 const props = defineProps<BaseShow>()
 
-const goodsList = ref({})
-goodsList.value = props.valueOf()
-// eslint-disable-next-line vue/no-dupe-keys
-const category = ref([])
-category.value = goodsList.value.category
+const goodsList = ref<BaseShow>(props)
+const category = ref<Array<string>>([])
+if (goodsList.value.category) {
+  category.value = goodsList.value.category
+}
 const activeIndex = ref(0)
-// eslint-disable-next-line vue/no-dupe-keys
-const goods = ref([])
-goods.value = goodsList.value.goods[activeIndex.value].list
+const goods = ref<Array<Good>>([])
+if (goodsList.value.goods) {
+  goods.value = goodsList.value.goods[activeIndex.value].list
+}
 
 
 watch(()=> activeIndex.value, (val) => {

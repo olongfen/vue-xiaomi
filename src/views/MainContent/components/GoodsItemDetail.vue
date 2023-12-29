@@ -1,5 +1,6 @@
 <script setup lang="ts">
-
+import type {Good} from "@/types"
+import { onMounted } from 'vue'
 
 
 const props = defineProps({
@@ -9,28 +10,41 @@ const props = defineProps({
     type: Array<string>,
   },
   goods: {
-    type: Object
+    type: Array<Good>,
   }
 })
+const checkProps = () => {
+  if (!props.goods) {
+    return false
+  }
+  if (!props.imgs) {
+    return false
+  }
+  if (!props.title) {
+    return false
+  }
+  return true
+}
+
 
 </script>
 
 <template>
-  <div class="goods-item-detail">
-    <div  v-if="props.imgs.length===1" class="detail-main " >
+  <div v-if ="checkProps()" class="goods-item-detail">
+    <div  v-if="props.imgs && props.imgs.length===1" class="detail-main " >
       <a   href="#">
         <img :src="props.imgs[0]" alt="">
       </a>
     </div>
-    <div class="detail-main-double" v-else>
+    <div class="detail-main-double" v-else-if="props.imgs && props.imgs.length>=2">
      <a  href="#"> <img  :src="props.imgs[0]" alt=""></a>
      <a  href="#">  <img :src="props.imgs[1]" alt=""></a>
 
     </div>
 <!--     商品左则详情信息-->
-    <div class="goods-info">
+    <div v-if="props.goods && props.goods.length>0" class="goods-info">
         <ul>
-          <li  v-for="(item,index) in goods" :key="item">
+          <li  v-for="(item,index) in props.goods" :key="index">
             <a v-if="(index < 7  || props.title==='手机')" class="item-info-base item-info" href="#">
               <img  :src="item.img" alt=""/>
               <h3 class="title">{{item.name}}</h3>
@@ -57,7 +71,7 @@ const props = defineProps({
               </a>
             </div>
           </li>
-          <div class="item-info-base item-info-special" v-if="goods.length <8">
+          <div class="item-info-base item-info-special" v-if="props.goods.length <8">
             <a href="#">
               <div class="more">
                 浏览更多
